@@ -14,7 +14,7 @@ import { typeDefs } from "./schema";
 import { mocks } from "./mocks";
 
 import './index.css';
-import App from './components/App/App';
+import App from './components/app/App';
 import registerServiceWorker from './registerServiceWorker';
 
 /*
