@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import HelloWorld from "../helloworld/HelloWorld";
+import Hello from "../hello/Hello";
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
         </header>
         
         <HelloWorld />
+        <Hello name="Rulo" />
       </div>
     );
   }

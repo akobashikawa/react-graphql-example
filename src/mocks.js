@@ -1,3 +1,6 @@
 export const mocks = {
-  helloworld: () => "Hello World"
+  Query: () => ({
+      helloworld: "Hello World!",
+      hello: (root, { name }) => `Hello ${name}!`
+  })
 };
