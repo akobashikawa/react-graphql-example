@@ -3,12 +3,18 @@ import ReactDOM from 'react-dom';
 
 import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-client";
+/*
 import { HttpLink } from "apollo-link-http";
+//*/
 import { InMemoryCache } from "apollo-cache-inmemory";
-import { mockNetworkInterface } from "react-apollo/test-utils";
+import { SchemaLink } from "apollo-link-schema";
+import { makeExecutableSchema, addMockFunctionsToSchema } from "graphql-tools";
+
+import { typeDefs } from "./schema";
+import { mocks } from "./mocks";
 
 import './index.css';
-import App from './components/App/';
+import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
 /*
@@ -19,14 +25,19 @@ const client = new ApolloClient({
     link: new HttpLink(),
     cache: new InMemoryCache()
 });
-*/
+//*/
 
-// https://medium.com/@carlos_42328/mocking-api-responses-with-react-apollo-11eb4610debe
-const networkInterface = mockNetworkInterface(...mocks);
+///*
+// https://dev-blog.apollodata.com/full-stack-react-graphql-tutorial-582ac8d24e3b
+const schema = makeExecutableSchema({ typeDefs });
+
+addMockFunctionsToSchema({ schema, mocks });
+
 const client = new ApolloClient({
-  networkInterface,
-  addTypename: false
+  link: new SchemaLink({ schema }),
+  cache: new InMemoryCache()
 });
+//*/
 
 const Root = () => {
   return (
